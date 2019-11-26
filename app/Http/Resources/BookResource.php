@@ -22,7 +22,7 @@ class BookResource extends JsonResource
         "pages" => $this->pages,
         "published" => $this->published,
         "rating" => $this->rating,
-        "shops" => $this->shops,
+        "shops" => $this->shops->pluck("name"),
         ];
     }
 }

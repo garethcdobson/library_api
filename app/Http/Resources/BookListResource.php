@@ -20,6 +20,7 @@ class BookListResource extends JsonResource
         "title" => $this->title,
         "published" => $this->published,
         "author id" => $this->author_id,
+        "shops" => $this->shops->pluck("name"),
         ];
     }
 }
