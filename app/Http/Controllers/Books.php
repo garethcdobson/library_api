@@ -7,6 +7,7 @@ use App\Book;
 use App\Http\Resources\BookResource;
 use App\Http\Resources\BookListResource;
 use App\Http\Requests\BookRequest;
+use App\Shop;
 
 
 class Books extends Controller
@@ -31,14 +32,16 @@ class Books extends Controller
      */
     public function store(BookRequest $request)
     {
-        // get all the request data
-        // returns an array of all the data the user sent
-        $data = $request->all();
+        // only get certain fields
+        $data = $request->only(["title", "published", "author_id", "pages", "ISBN", "rating"]);
+        $book = Book::create($data);
 
-        // create book with data and store in DB
-        // and return it as JSON
-        // automatically gets 201 status as it's a POST request
-        return Book::create($data);
+        // get back a collection of shop objects
+        $shops = Shop::fromStrings($request->get("shops"));
+     
+        // sync the tags: needs an array of Shop ids
+        $book->shops()->sync($shops->pluck("id")->all());
+        return new BookResource($book);
     }
 
     /**
@@ -60,19 +63,15 @@ class Books extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(BookRequest $request, Book $book)
+    public function update(BookRequest $request, Book $article)
     {
-        // find the article with the given id
-        // $book = Book::find($id);
-    
-        // get the request data
-        $data = $request->all();
-
-        // update the article using the fill method
-        // then save it to the database
+        // only get certain fields
+        $data = $request->only(["title", "published", "author_id"]);
         $book->fill($data)->save();
-
-        // return the resource
+        // get back a collection of shop objects
+        $shops = Shop::fromStrings($request->get("shops"));
+        // sync the tags: needs an array of Shop ids
+        $book->shops()->sync($shops->pluck("id")->all());
         return new BookResource($book);
     }
 
