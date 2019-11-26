@@ -16,6 +16,7 @@ class Shops extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    // List all the shops that a certain book is sold in
     public function index(Book $book)
     {
         // get all the shops
