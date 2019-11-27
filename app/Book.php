@@ -42,4 +42,10 @@ class Book extends Model
   {
     return $this->belongsToMany(Shop::class);
   }
+
+  // use the belongsToMany() method again
+  public function formats()
+  {
+    return $this->belongsToMany(Format::class);
+  }
 }

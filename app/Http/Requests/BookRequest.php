@@ -25,7 +25,6 @@ class BookRequest extends FormRequest
     {
         return [
             "title" => ["required", "string", "max:100"],
-            "published" => ["required", "date"],
         ];
     }
 }

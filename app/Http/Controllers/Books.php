@@ -8,6 +8,7 @@ use App\Http\Resources\BookResource;
 use App\Http\Resources\BookListResource;
 use App\Http\Requests\BookRequest;
 use App\Shop;
+use App\Format;
 
 
 class Books extends Controller
@@ -41,6 +42,13 @@ class Books extends Controller
      
         // sync the tags: needs an array of Shop ids
         $book->shops()->sync($shops->pluck("id")->all());
+
+        // get back a collection of tag objects
+        $formats = Format::fromStrings($request->get("formats"));
+   
+        // sync the tags: needs an array of Tag ids
+         $book->formats()->sync($formats->pluck("id")->all());
+
         return new BookResource($book);
     }
 
@@ -63,7 +71,7 @@ class Books extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(BookRequest $request, Book $article)
+    public function update(BookRequest $request, Book $book)
     {
         // only get certain fields
         $data = $request->only(["title", "published", "author_id"]);
@@ -72,6 +80,12 @@ class Books extends Controller
         $shops = Shop::fromStrings($request->get("shops"));
         // sync the tags: needs an array of Shop ids
         $book->shops()->sync($shops->pluck("id")->all());
+
+        // get back a collection of tag objects
+        $formats = Format::fromStrings($request->get("formats"));
+        // sync the tags: needs an array of Tag ids
+        $book->formats()->sync($formats->pluck("id")->all());
+
         return new BookResource($book);
     }
 
