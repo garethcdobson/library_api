@@ -12,7 +12,7 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #fff;
+                background-color: white;
                 color: blue;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
@@ -81,19 +81,12 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Library API
+                    Authors
                 </div>
-
-                <div class="links">
-                    @if (Route::has('books'))
-                        <a href="{{ route('books') }}">Books</a>
-                    @endif
-                    @if (Route::has('authors'))
-                        <a href="{{ route('authors') }}">Authors</a>
-                    @endif
-                    @if (Route::has('shops'))
-                        <a href="{{ route('shops') }}">Shops</a>
-                    @endif
+                <div>
+                    @foreach ($authors AS $author)
+                        <p>{{ $author }}</p>
+                    @endforeach
                 </div>
             </div>
         </div>

@@ -1,5 +1,9 @@
 <?php
 
+use App\Book;
+use App\Author;
+use App\Shop;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,3 +18,15 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('books', function () {
+    return view('books', ['books' => Book::all()]);
+})->name('books');
+
+Route::get('authors', function () {
+    return view('authors', ['authors' => Author::all()]);
+})->name('authors');
+
+Route::get('shops', function () {
+    return view('shops', ['shops' => Shop::all()]);
+})->name('shops');
