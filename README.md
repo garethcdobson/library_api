@@ -7,7 +7,6 @@ GET api/authors -> Get a list of all authors <br>
 DELETE api/authors/{author} -> Delete specific author <br>
 PUT api/authors/{author} -> Update a specific author <br>
 GET  api/authors/{author}/books -> Get a list of all books by a certain author <br>
-
 ### Books <br>
 POST api/books -> Store a new book <br>
 PUT api/books/{book} -> Update a specific book (inc list of shops and formats) <br>
@@ -15,12 +14,10 @@ DELETE api/books/{book} -> Delete a specific book <br>
 GET api/books -> Get a list of all books <br>
 GET api/books/{book} -> Get a specific book <br>
 GET api/books/{book}/shops -> Get a list of all shops at book is sold in <br>
-
 ### Shops <br>
 POST api/shops -> Store a new shop <br>
 PUT api/shops/{shop}/books -> Update a specific shop with a list of books <br>
 GET api/shops/{shop}/books -> Get a list of all the books a specific shop sells <br>
-
 ### Formats <br>
 GET api/books/{book}/formats -> Get a list of the formats available for a specific book <br>
 GET api/formats/{format}/books -> Get a list of books available in a specific format <br>
