@@ -1,23 +1,22 @@
-## Library API built with Laravel
+# Library API built with Laravel
+------------------------------------- <br>
+## Route Structure <br>
+### Authors <br>
+POST api/authors -> Create a new authors <br>
+GET api/authors -> Get a list of all authors <br>
+DELETE api/authors/{author} -> Delete specific author <br>
+PUT api/authors/{author} -> Update a specific author <br>
+GET  api/authors/{author}/books -> Get a list of all books by a certain author <br>
 
-# Route Structure
+### Books <br>
+POST api/books -> Store a new book <br>
+PUT api/books/{book} -> Update a specific book <br>
+DELETE api/books/{book} -> Delete a specific book <br>
+GET api/books -> Get a list of all books <br>
+GET api/books/{book} -> Get a specific book <br>
+GET api/books/{book}/shops -> Get a list of all shops at book is sold in <br>
 
-| Domain | Method   | URI                        | Name | Action                               | Middleware   |
-+--------+----------+----------------------------+------+--------------------------------------+--------------+
-|        | GET|HEAD | /                          |      | Closure                              | web          |
-|        | POST     | api/authors                |      | App\Http\Controllers\Authors@store   | api          |
-|        | GET|HEAD | api/authors                |      | App\Http\Controllers\Authors@index   | api          |
-|        | DELETE   | api/authors/{author}       |      | App\Http\Controllers\Authors@destroy | api          |
-|        | PUT      | api/authors/{author}       |      | App\Http\Controllers\Authors@update  | api          |
-|        | POST     | api/authors/{author}/books |      | App\Http\Controllers\Books@store     | api          |
-|        | GET|HEAD | api/authors/{author}/books |      | App\Http\Controllers\Authors@show    | api          |
-|        | GET|HEAD | api/books                  |      | App\Http\Controllers\Books@index     | api          |
-|        | POST     | api/books                  |      | App\Http\Controllers\Books@store     | api          |
-|        | PUT      | api/books/{book}           |      | App\Http\Controllers\Books@update    | api          |
-|        | DELETE   | api/books/{book}           |      | App\Http\Controllers\Books@destroy   | api          |
-|        | GET|HEAD | api/books/{book}           |      | App\Http\Controllers\Books@show      | api          |
-|        | GET|HEAD | api/books/{book}/shops     |      | App\Http\Controllers\Shops@index     | api          |
-|        | POST     | api/shops                  |      | App\Http\Controllers\Shops@store     | api          |
-|        | PUT      | api/shops/{shop}/books     |      | App\Http\Controllers\Shops@update    | api          |
-|        | GET|HEAD | api/shops/{shop}/books     |      | App\Http\Controllers\Shops@show      | api          |
-|        | GET|HEAD | api/user                   |      | Closure                              | api,auth:api
+### Shops <br>
+POST api/shops -> Store a new shop <br>
+PUT api/shops/{shop}/books -> Update a specific shop with a list of books <br>
+GET api/shops/{shop}/books -> Get a list of all the books a specific shop sells <br>
