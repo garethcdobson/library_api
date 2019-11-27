@@ -40,13 +40,13 @@ class Books extends Controller
         // get back a collection of shop objects
         $shops = Shop::fromStrings($request->get("shops"));
      
-        // sync the tags: needs an array of Shop ids
+        // sync the tags: needs an array of shop ids
         $book->shops()->sync($shops->pluck("id")->all());
 
-        // get back a collection of tag objects
+        // get back a collection of format objects
         $formats = Format::fromStrings($request->get("formats"));
    
-        // sync the tags: needs an array of Tag ids
+        // sync the tags: needs an array of format ids
          $book->formats()->sync($formats->pluck("id")->all());
 
         return new BookResource($book);
@@ -76,14 +76,15 @@ class Books extends Controller
         // only get certain fields
         $data = $request->only(["title", "published", "author_id"]);
         $book->fill($data)->save();
+
         // get back a collection of shop objects
         $shops = Shop::fromStrings($request->get("shops"));
-        // sync the tags: needs an array of Shop ids
+        // sync the tags: needs an array of shop ids
         $book->shops()->sync($shops->pluck("id")->all());
 
-        // get back a collection of tag objects
+        // get back a collection of format objects
         $formats = Format::fromStrings($request->get("formats"));
-        // sync the tags: needs an array of Tag ids
+        // sync the tags: needs an array of format ids
         $book->formats()->sync($formats->pluck("id")->all());
 
         return new BookResource($book);

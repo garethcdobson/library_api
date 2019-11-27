@@ -37,11 +37,13 @@ $router->group(["prefix" => "authors"], function ($router) {
 });
 
 // many-to-many routes
+// shop routes
 $router->post("shops", "Shops@store");
 $router->put("shops/{shop}/books", "Shops@update");
 $router->get("shops/{shop}/books", "Shops@show");
 $router->get("books/{book}/shops", "Shops@index");
 
-
-
+// format routes
+$router->get("books/{book}/formats", "Formats@index");
+$router->get("formats/{format}/books", "Formats@show");
 

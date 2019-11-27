@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class BookListResource extends JsonResource
+class FormatListResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,12 +16,8 @@ class BookListResource extends JsonResource
     {
         // just the id and title properties
         return [
-        "id" => $this->id,
-        "title" => $this->title,
-        "published" => $this->published,
-        "author id" => $this->author_id,
-        "shops" => $this->shops->pluck("name"),
-        "formats" => $this->formats->pluck("name"),
+            "id" => $this->id,
+            "name" => $this->name,
         ];
     }
 }

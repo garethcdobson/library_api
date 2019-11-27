@@ -20,3 +20,7 @@ GET api/books/{book}/shops -> Get a list of all shops at book is sold in <br>
 POST api/shops -> Store a new shop <br>
 PUT api/shops/{shop}/books -> Update a specific shop with a list of books <br>
 GET api/shops/{shop}/books -> Get a list of all the books a specific shop sells <br>
+
+### Formats <br>
+GET api/books/{book}/formats -> Get a list of the formats available for a specific book <br>
+GET api/formats/{format}/books -> Get a list of books available in a specific format <br>
