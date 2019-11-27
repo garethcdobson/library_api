@@ -10,7 +10,7 @@ GET  api/authors/{author}/books -> Get a list of all books by a certain author <
 
 ### Books <br>
 POST api/books -> Store a new book <br>
-PUT api/books/{book} -> Update a specific book <br>
+PUT api/books/{book} -> Update a specific book (inc list of shops and formats) <br>
 DELETE api/books/{book} -> Delete a specific book <br>
 GET api/books -> Get a list of all books <br>
 GET api/books/{book} -> Get a specific book <br>
